@@ -19,6 +19,20 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue")
+    },
+    {
+      path: "/admin",
+      name: "admin",
+      component: () =>
+        import(/* webpackChunkName: "admin" */ "./views/admin/AdminBase.vue"),
+      children: [
+        {
+          path: "sick",
+          name: "sick",
+          component: () =>
+            import(/* webpackChunkName: "admin.sick" */ "./views/admin/Sick.vue")
+        }
+      ]
     }
   ]
 });
